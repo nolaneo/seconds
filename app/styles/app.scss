@@ -49,31 +49,35 @@ $light-yellow: #f8ffe5;
   flex-direction: column;
 }
 
-.title {
-  color: $red;
-  font-size: 44px;
-  font-family: "Fredoka One", cursive;
-  animation: title-animation 1s;
+.setup-container {
+  .title {
+    color: $red;
+    font-size: 44px;
+    font-family: "Fredoka One", cursive;
+    animation: title-animation 1s;
 
-  animation-fill-mode: forwards;
-  transform-origin: center;
-}
+    animation-fill-mode: forwards;
+    transform-origin: center;
+  }
 
-.start-button {
-  height: 10vh;
-  color: white;
-  border-radius: 10px;
-  background-color: $red;
-  font-family: "Fredoka One", cursive;
-  font-size: 20px;
-}
+  .start-button {
+    height: 10vh;
+    color: white;
+    border-radius: 10px;
+    background-color: $red;
+    font-family: "Fredoka One", cursive;
+    font-size: 20px;
+    outline: none;
+    border: none;
+  }
 
-.start-button:hover {
-  cursor: pointer;
-}
+  .start-button:hover {
+    cursor: pointer;
+  }
 
-.start-button:active {
-  background-color: $dark-red;
+  .start-button:active {
+    background-color: $dark-red;
+  }
 }
 
 @keyframes title-animation {
@@ -92,8 +96,16 @@ $light-yellow: #f8ffe5;
   display: flex;
 }
 
+.flex.animatable {
+  transition: flex 200ms ease-in-out;
+}
+
 .grow {
   flex: 1;
+}
+
+.shrink {
+  flex: 0;
 }
 
 .horizontal {
@@ -110,4 +122,22 @@ $light-yellow: #f8ffe5;
 
 .center-vertically {
   align-items: center;
+}
+
+.grow-in {
+  flex: 1;
+  animation: grow-in 200ms ease-in-out forwards;
+  overflow: hidden;
+}
+
+@keyframes grow-in {
+  0% {
+    flex: 0;
+    max-height: 0;
+  }
+
+  100% {
+    max-height: 100vh;
+    flex: 1;
+  }
 }

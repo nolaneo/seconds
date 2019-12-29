@@ -1,0 +1,30 @@
+<div class="flex grow vertical setup-container o__{{this.setupProgress}}">
+  <div class="animatable flex grow vertical center-horizontally center-vertically {{if (not-eq this.setupProgress 'start') 'shrink'}}">
+    <div class="title">
+      SECONDS
+    </div>
+  </div>
+
+  {{#if (eq this.setupProgress 'start')}}
+    <button type="button" class="start-button flex center-horizontally center-vertically" {{on 'click' this.startSetup}}>
+      Start!
+    </button>
+  {{else if (eq this.setupProgress 'select-teams')}}
+    <div class="animatable flex grow-in vertical">
+        <div class="flex grow"></div>
+        <button type="button" class="start-button flex grow center-horizontally center-vertically" {{on 'click' this.startSetup}}>
+          2 teams
+        </button>
+        <div class="flex grow"></div>
+        <button type="button" class="start-button flex grow center-horizontally center-vertically" {{on 'click' this.startSetup}}>
+          3 teams
+        </button>
+        <div class="flex grow"></div>
+        <button type="button" class="start-button flex grow center-horizontally center-vertically" {{on 'click' this.startSetup}}>
+          4 teams
+        </button>
+        <div class="flex grow"></div>
+    </div>
+  {{/if}}
+
+</div>
