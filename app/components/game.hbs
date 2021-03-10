@@ -1,0 +1,45 @@
+{{#if this.showScoreSelect}}
+  <div class="flex flex-col p-4 flex-1 items-center justify-center">
+    <div class="flex flex-col space-y-4">
+      <h1 class="text-lg">How did you do?</h1>
+      <div
+        class="bg-red-500 hover:bg-red-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+        {{on "click" (fn this.addScore 0)}}
+      >
+        Nothing!
+      </div>
+      <div
+        class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+        {{on "click" (fn this.addScore 1)}}
+      >
+        One
+      </div>
+      <div
+        class="bg-yellow-200 hover:bg-yellow-400 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+        {{on "click" (fn this.addScore 2)}}
+      >
+        Two
+      </div>
+      <div
+        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+        {{on "click" (fn this.addScore 3)}}
+      >
+        Three
+      </div>
+      <div
+        class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+        {{on "click" (fn this.addScore 4)}}
+      >
+        Four
+      </div>
+      <div
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+        {{on "click" (fn this.addScore 5)}}
+      >
+        Five
+      </div>
+    </div>
+  </div>
+{{else}}
+  
+{{/if}}
