@@ -1,45 +1,56 @@
-{{#if this.showScoreSelect}}
+{{#if this.waiting}}
+  <div class="flex flex-col p-4 flex-1 items-center justify-center">
+    <div class="flex flex-col space-y-4 items-center">
+      <h1 class="text-5xl marker text-white">Player {{inc this.gameService.currentPlayer}}</h1>
+      <h1 class="text-2xl text-white">Are you ready?</h1>
+      <div
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer text-2xl border border-white"
+        {{on "click" this.ready}}
+      >
+        Ready!
+      </div>
+
+      <div class="flex flex-col p-6 rounded bg-opacity-50 bg-gray-900 space-y-4">
+        <h1 class="text-2xl text-white">Current scores</h1>
+        {{#each this.scores as |score index|}}
+          <h1 class="text-xl text-white">Player {{inc index}}: {{score}} points</h1>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+
+{{else if this.showScoreSelect}}
   <div class="flex flex-col p-4 flex-1 items-center justify-center">
     <div class="flex flex-col space-y-4">
-      <h1 class="text-lg">How did you do?</h1>
+      <h1 class="text-xl marker text-white text-center">How did you do?</h1>
+      {{#each this.card as |item|}}
+        <h1 class="text-2xl p-4 text-center rounded w-full bg-opacity-50 bg-gray-900 text-white {{if item.correct 'bg-green-900 bg-opacity-90'}} text-whitew-full" {{on "click" (fn this.toggleScore item)}}>
+          {{#if item.correct}}
+            ✓
+          {{else}}
+            ◯
+          {{/if}}
+          {{item.word}}
+        </h1>
+      {{/each}}
       <div
-        class="bg-red-500 hover:bg-red-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
-        {{on "click" (fn this.addScore 0)}}
+        class="bg-green-500 hover:bg-green-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer border border-white"
+        {{on "click" this.addScore}}
       >
-        Nothing!
-      </div>
-      <div
-        class="bg-yellow-500 hover:bg-yellow-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
-        {{on "click" (fn this.addScore 1)}}
-      >
-        One
-      </div>
-      <div
-        class="bg-yellow-200 hover:bg-yellow-400 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
-        {{on "click" (fn this.addScore 2)}}
-      >
-        Two
-      </div>
-      <div
-        class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
-        {{on "click" (fn this.addScore 3)}}
-      >
-        Three
-      </div>
-      <div
-        class="bg-purple-500 hover:bg-purple-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
-        {{on "click" (fn this.addScore 4)}}
-      >
-        Four
-      </div>
-      <div
-        class="bg-green-500 hover:bg-green-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
-        {{on "click" (fn this.addScore 5)}}
-      >
-        Five
+        Done!
       </div>
     </div>
   </div>
 {{else}}
-  
+  <audio autoplay src="countdown.mp3" type="audio/mpeg" />
+  <h1 class="h-3 text-center w-full bg-gray-100 bg-opacity-50 relative rounded-full border border-white">
+    <div class="w-full h-full bg-gray-200 absolute"></div>
+  </h1>
+  <div class="flex flex-col p-4 flex-1 items-center justify-center">
+    <div class="flex flex-col space-y-8 items-center ">
+      {{#each this.card as |item|}}
+        <h1 class="text-2xl p-4 text-center p-4 rounded text-white bg-opacity-50 bg-gray-900 w-full">{{item.word}}</h1>
+      {{/each}}
+    </div>
+  </div>
 {{/if}}

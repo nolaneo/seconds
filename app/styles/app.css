@@ -3,3 +3,17 @@
 html body {
   min-height: 100vh;
 }
+
+.marker {
+  font-family: 'Permanent Marker', cursive;
+}
+
+.orange-outline {
+  -webkit-text-stroke: 1px;
+  -webkit-text-stroke-color: orangered;
+}
+
+.main-bg {
+  background: url('/seconds/topography.svg'), orangered;
+  background-blend-mode: hard-light;
+}

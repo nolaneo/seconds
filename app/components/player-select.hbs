@@ -1,20 +1,20 @@
 <div class="flex flex-col p-4 flex-1 items-center justify-center">
   <div class="flex flex-col space-y-4">
-    <h1 class="text-lg">Choose the number of players</h1>
+    <h1 class="text-xl marker text-white">Choose the number of players</h1>
     <div
-      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+      class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer border border-white"
       {{on "click" (fn this.setPlayers 2)}}
     >
       2 Players
     </div>
     <div
-      class="bg-green-500 hover:bg-green-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+      class="bg-green-500 hover:bg-green-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer border border-white"
       {{on "click" (fn this.setPlayers 3)}}
     >
       3 Players
     </div>
     <div
-      class="bg-red-500 hover:bg-red-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer"
+      class="bg-red-500 hover:bg-red-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer border border-white"
       {{on "click" (fn this.setPlayers 4)}}
     >
       4 Players
