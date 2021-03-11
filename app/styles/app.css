@@ -17,3 +17,7 @@ html body {
   background: url('/seconds/topography.svg'), orangered;
   background-blend-mode: hard-light;
 }
+
+.countdown {
+  transition: all 1s linear;
+}

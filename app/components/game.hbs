@@ -45,6 +45,7 @@
   <audio autoplay src="countdown.mp3" type="audio/mpeg" />
   <h1 class="h-3 text-center w-full bg-gray-100 bg-opacity-50 relative rounded-full border border-white">
     <div class="w-full h-full bg-gray-200 absolute"></div>
+    <div class="h-full {{this.bgColor}} absolute countdown" style="width: {{this.remainingTimePercentage}}%"></div>
   </h1>
   <div class="flex flex-col p-4 flex-1 items-center justify-center">
     <div class="flex flex-col space-y-8 items-center ">
