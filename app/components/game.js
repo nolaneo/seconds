@@ -25,6 +25,7 @@ export default class GameComponent extends Component {
   @tracked showScoreSelect = false;
   @tracked waiting = false;
   @tracked scores = [];
+  @tracked muted = false;
 
   constructor() {
     super(...arguments);
@@ -75,6 +76,10 @@ export default class GameComponent extends Component {
 
   @action toggleScore(item) {
     set(item, 'correct', !item.correct);
+  }
+
+  @action toggleMute() {
+    this.muted = !this.muted;
   }
 
   nextPlayer() {

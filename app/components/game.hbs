@@ -42,7 +42,14 @@
     </div>
   </div>
 {{else}}
-  <audio autoplay src="countdown.mp3" type="audio/mpeg" />
+  <div class="fixed top-2 right-4" {{on "click" this.toggleMute}}>
+    {{#if this.muted}}
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 384 384"><path d="M288 192c0-38-22-70-53-86v47l52 53 1-14zM341 192c0 20-4 39-11 56l32 33A191 191 0 00235 5v44c61 18 106 75 106 143zM192 21l-45 45 45 45zM27 0L0 27l101 101H0v128h85l107 107V219l91 91c-15 11-31 20-48 25v44c29-7 56-20 78-38l44 43 27-27-192-192L27 0z"/></svg>
+    {{else}}
+      <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 384 384"><path d="M288 192c0-38-22-70-53-86v172c31-16 53-48 53-86zM0 128v128h85l107 107V21L85 128z"/><path d="M235 5v44a149 149 0 010 286v44a192 192 0 000-374z"/></svg>
+    {{/if}}
+  </div>
+  <audio autoplay src="countdown.mp3" muted={{this.muted}} type="audio/mpeg" />
   <h1 class="h-3 text-center w-full bg-gray-100 bg-opacity-50 relative rounded-full border border-white">
     <div class="w-full h-full bg-gray-200 absolute"></div>
     <div class="h-full {{this.bgColor}} absolute countdown" style="width: {{this.remainingTimePercentage}}%"></div>
