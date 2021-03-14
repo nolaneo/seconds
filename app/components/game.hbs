@@ -49,8 +49,7 @@
       <svg xmlns="http://www.w3.org/2000/svg" class="w-8" viewBox="0 0 384 384"><path d="M288 192c0-38-22-70-53-86v172c31-16 53-48 53-86zM0 128v128h85l107 107V21L85 128z"/><path d="M235 5v44a149 149 0 010 286v44a192 192 0 000-374z"/></svg>
     {{/if}}
   </div>
-  <audio autoplay src="countdown.mp3" muted={{this.muted}} type="audio/mpeg" />
-  <h1 class="h-3 text-center w-full bg-gray-100 bg-opacity-50 relative rounded-full border border-white">
+  <h1 class="h-3 text-center w-full bg-gray-100 bg-opacity-50 relative rounded-full border border-white overflow-hidden">
     <div class="w-full h-full bg-gray-200 absolute"></div>
     <div class="h-full {{this.bgColor}} absolute countdown" style="width: {{this.remainingTimePercentage}}%"></div>
   </h1>
@@ -62,3 +61,4 @@
     </div>
   </div>
 {{/if}}
+<audio src="countdown.mp3" muted={{this.muted}} type="audio/mpeg" />

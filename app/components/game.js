@@ -36,7 +36,7 @@ export default class GameComponent extends Component {
   }
 
   get remainingTimePercentage() {
-    return (this.time / 30.0) * 100;
+    return (this.time / 60.0) * 100;
   }
 
   get bgColor() {
@@ -50,10 +50,14 @@ export default class GameComponent extends Component {
   }
 
   @task *countdown() {
-    document.querySelector('audio')?.play();
-    for (let i = 30; i > 0; --i) {
+    let audio = document.querySelector('audio');
+    if (audio) {
+      audio.currentTime = 0;
+      audio.play();
+    }
+    for (let i = 60; i > 0; --i) {
       this.time = i;
-      yield timeout(1000);
+      yield timeout(500);
     }
     this.showScoreSelect = true;
   }

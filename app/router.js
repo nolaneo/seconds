@@ -11,4 +11,5 @@ Router.map(function() {
     this.route('player-select');
     this.route('in-progress');
   });
+  this.route('classifier');
 });

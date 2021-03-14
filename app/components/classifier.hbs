@@ -1,0 +1,31 @@
+<div class="flex flex-col flex-1 space-y-8" style="min-width: 50%;">
+  <div class="text-4xl w-full bg-opacity-50 bg-gray-900 text-white p-6 text-center">
+    {{this.word}}
+  </div>
+  <div
+    class="bg-green-500 hover:bg-green-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer border border-white"
+    {{on "click" (fn this.classifyWord this.word 'good')}}
+  >
+    OK!
+  </div>
+
+  <div
+    class="bg-yellow-300 hover:bg-yellow-600 text-white font-bold py-6 px-8 rounded text-center cursor-pointer border border-white"
+    {{on "click" (fn this.classifyWord this.word 'meh')}}
+  >
+    MEH
+  </div>
+  <div
+    class="bg-red-500 hover:bg-red-700 text-white font-bold py-6 px-8 rounded text-center cursor-pointer border border-white"
+    {{on "click" (fn this.classifyWord this.word 'bad')}}
+  >
+    BAD!
+  </div>
+  <div class="bg-opacity-50 bg-gray-900 text-white p-6 text-center">
+    <p>Good: {{this.results.good}}</p>
+    <p>Meh: {{this.results.meh}}</p>
+    <p>Bad: {{this.results.bad}}</p>
+  </div>
+</div>
+
+{{on-document 'keydown' this.keydown}}
