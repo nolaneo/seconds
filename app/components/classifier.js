@@ -3,6 +3,7 @@ import words from 'seconds/data/words';
 import { tracked } from '@glimmer/tracking';
 import { action } from '@ember/object';
 import { set } from '@ember/object';
+import { A } from '@ember/array';
 
 function shuffleArray(input) {
   let array = [...input];
@@ -24,7 +25,19 @@ export default class ClassifierComponent extends Component {
 
   constructor() {
     super(...arguments);
-    this.shuffledWords = shuffleArray(words);
+    this.shuffledWords = A(shuffleArray(words));
+    let usedWords = [
+      ...this.getWords('bad'),
+      ...this.getWords('meh'),
+      ...this.getWords('good'),
+    ];
+    this.results.good = this.getWords('good').length;
+    this.results.bad = this.getWords('bad').length;
+    this.results.meh = this.getWords('meh').length;
+    this.shuffledWords.removeObjects(usedWords);
+    console.log(
+      `Removing ${usedWords.length} previously classified words. Dataset is now ${this.shuffledWords.length}`
+    );
     this.getNewWord();
   }
 
@@ -41,7 +54,6 @@ export default class ClassifierComponent extends Component {
   }
 
   @action classifyWord(word, classification) {
-    console.log('classifyWord');
     set(this.results, classification, this.results[classification] + 1);
     let items = this.getWords(classification);
     items.push(word);
@@ -50,7 +62,6 @@ export default class ClassifierComponent extends Component {
   }
 
   @action keydown(event) {
-    console.log('keydown', event);
     event.preventDefault();
     event.stopPropagation();
     if (event.key === 'Enter') {
